@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>REST API Calculator</name>
+    </assembly>
+    <members>
+        <member name="T:REST_API_Calculator.Controllers.CalculatorController">
+            <summary>
+            Контроллер калькулятора.
+            </summary>
+        </member>
+        <member name="M:REST_API_Calculator.Controllers.CalculatorController.Addition(System.Double,System.Double)">
+            <summary>
+            Метод сложения.
+            </summary>
+            <param name="a">Первое значение.</param>
+            <param name="b">Второе значение.</param>
+            <returns>Результат сложения.</returns>
+            <response code="200">Сложение выполнено успешно.</response>
+        </member>
+        <member name="M:REST_API_Calculator.Controllers.CalculatorController.Subtraction(System.Double,System.Double)">
+            <summary>
+            Метод вычитания.
+            </summary>
+            <param name="a">Первое значение.</param>
+            <param name="b">Второе значение.</param>
+            <returns>Результат вычитания.</returns>
+            <response code="200"> выполнено успешно.</response>
+            <response code="200">Вычитание выполнено успешно.</response>
+        </member>
+        <member name="M:REST_API_Calculator.Controllers.CalculatorController.Multiplication(System.Double,System.Double)">
+            <summary>
+            Метод умножения.
+            </summary>
+            <param name="a">Первое значение.</param>
+            <param name="b">Второе значение.</param>
+            <returns>Результат умножения.</returns>
+            <response code="200">Умножение выполнено успешно.</response>
+        </member>
+        <member name="M:REST_API_Calculator.Controllers.CalculatorController.Division(System.Double,System.Double)">
+            <summary>
+            Метод деления.
+            </summary>
+            <param name="a">Первое значение.</param>
+            <param name="b">Второе значение.</param>
+            <returns>Результат деления.</returns>
+            <response code="200">Деление выполнено успешно.</response>
+            /// <response code="400">На ноль делить нельзя.</response>
+        </member>
+        <member name="M:REST_API_Calculator.Controllers.CalculatorController.CalculateFactorial(System.Int32)">
+            <summary>
+            Метод вычисления факториала.
+            </summary>
+            <param name="number">Значение.</param>
+            <returns>Результат вычисления факториала.</returns>
+            <response code="200">Факториал вычеслен успешно.</response>
+            <response code="400">Факториал для отрицательных чисел не может быть вычеслен.</response>
+            <response code="500">Ошибка сервера при вычислении.</response>
+        </member>
+    </members>
+</doc>
