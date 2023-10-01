@@ -1,0 +1,24 @@
+﻿@model Calculator
+@{
+    ViewData["Title"] = "Home Page";
+}
+<form asp-action="Index">
+    <div class="text-center">
+        <h1 class="display-4">Добро пожаловать в микросервис калькулятор</h1>
+        <p><label>Первое значение</label></p>
+        <p><input type="number" asp-for="Value1" /></p>
+
+        <p><label>Второе значение</label></p>
+        <p><input type="number" asp-for="Value2" /></p>
+
+        <p><input type="submit" value="Сложение" asp-for="Calculate" /></p>
+        <p><input type="submit" value="Вычитание" asp-for="Calculate" /></p>
+        <p><input type="submit" value="Умножение" asp-for="Calculate" /></p>
+        <p><input type="submit" value="Деление" asp-for="Calculate" /></p>
+        <p><input type="submit" value="Факториал первого значения" asp-for="Calculate" /></p>
+
+        <p><label>Ответ</label></p>
+        <p><input type="number" asp-for="@ViewData["result"]" /></p>
+    </div>
+</form>
+

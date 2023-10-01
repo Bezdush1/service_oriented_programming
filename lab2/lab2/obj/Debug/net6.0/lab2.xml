@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>lab2</name>
+    </assembly>
+    <members>
+        <member name="T:lab2.Controllers.PeopleController">
+            <summary>
+            Контроллер для модели человек.
+            </summary>
+        </member>
+        <member name="M:lab2.Controllers.PeopleController.AddPerson(lab2.Models.PeopleModel)">
+            <summary>
+            Добавление человека в список.
+            </summary>
+            <param name="person">Данные человека.</param>
+            <returns>Результат обработки запроса.</returns>
+            <response code="201">Запрос успешно выполнен, произошло создание обьекта.</response>
+            <response code="400">Некорректный запрос.</response>
+            <response code="409">Запрос не может быть выполнен из за конфликта.</response>
+        </member>
+        <member name="M:lab2.Controllers.PeopleController.UpdatePersonByName(System.String,System.String,lab2.Models.PeopleModel)">
+            <summary>
+            Обновить информацию о человеке по имени и фамилии.
+            </summary>
+            <param name="firstName">Имя.</param>
+            <param name="secondName">Фамилия.</param>
+            <param name="updatedPerson">Обновленные данные о человеке.</param>
+            <returns>Результат обработки запроса.</returns>
+            <response code="200">Успешный запрос.</response>
+            <response code="400">Некорректный запрос.</response>
+            <response code="404">Человек не найден.</response>
+        </member>
+        <member name="M:lab2.Controllers.PeopleController.GetPerson(System.String,System.String)">
+            <summary>
+            Найти человека по имени и фамилии.
+            </summary>
+            <param name="firstName">Имя.</param>
+            <param name="secondName">Фамилия.</param>
+            <returns>Результат обработки запроса.</returns>
+            <response code="200">Успешный запрос.</response>
+            <response code="404">Невозможно выполнить запрос.</response>
+        </member>
+        <member name="M:lab2.Controllers.PeopleController.DeletePerson(System.String,System.String)">
+            <summary>
+            Удалить человека, зная имя и фамилию.
+            </summary>
+            <param name="firstName">Имя.</param>
+            <param name="secondName">Фамилия.</param>
+            <returns>Результат обработки запроса.</returns>
+            <response code="204">Обьект не найден.</response>
+            <response code="404">Невозможно выполнить запрос.</response>
+        </member>
+        <member name="T:lab2.Models.PeopleModel">
+            <summary>
+            Класс, представляющий модель человека.
+            </summary>
+        </member>
+        <member name="P:lab2.Models.PeopleModel.Id">
+            <summary>
+            Уникальный идентификатор человека.
+            </summary>
+        </member>
+        <member name="P:lab2.Models.PeopleModel.SecondName">
+            <summary>
+            Фамилия.
+            </summary>
+        </member>
+        <member name="P:lab2.Models.PeopleModel.FirstName">
+            <summary>
+            Имя.
+            </summary>
+        </member>
+        <member name="P:lab2.Models.PeopleModel.Age">
+            <summary>
+            Возраст.
+            </summary>
+        </member>
+        <member name="P:lab2.Models.PeopleModel.Specialization">
+            <summary>
+            Специализация.
+            </summary>
+        </member>
+    </members>
+</doc>
