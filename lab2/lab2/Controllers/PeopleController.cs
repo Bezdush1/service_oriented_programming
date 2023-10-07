@@ -6,15 +6,15 @@ using System.Linq;
 
 namespace lab2.Controllers
 {
+    
+
     /// <summary>
     /// Контроллер для модели человек.
     /// </summary>
     [Route("api/people")]
     [ApiController]
     public class PeopleController : ControllerBase
-    {
-        private readonly List<PeopleModel> peopleList = new List<PeopleModel>();
-
+    { 
         /// <summary>
         /// Добавление человека в список.
         /// </summary>
@@ -35,14 +35,14 @@ namespace lab2.Controllers
             }
 
             // Проверить, существует ли человек с таким же именем и фамилией.
-            var existingPerson = peopleList.FirstOrDefault(p => p.FirstName == person.FirstName && p.SecondName == person.SecondName);
+            var existingPerson = PeopleRepository.PeopleList.FirstOrDefault(p => p.FirstName == person.FirstName && p.SecondName == person.SecondName);
             if (existingPerson != null)
             {
                 return Conflict("Человек с таким же именем и фамилией уже существует.");
             }
 
             // Добавить человека в список.
-            peopleList.Add(person);
+            PeopleRepository.PeopleList.Add(person);
 
             // Вернуть успешный статус и объект, который был добавлен.
             return CreatedAtAction(nameof(GetPerson), new { firstName = person.FirstName, secondName = person.SecondName }, person);
@@ -70,13 +70,15 @@ namespace lab2.Controllers
             }
 
             // Найти человека по имени и фамилии и обновить его данные.
-            var existingPerson = peopleList.FirstOrDefault(p => p.FirstName == firstName && p.SecondName == secondName);
+            var existingPerson = PeopleRepository.PeopleList.FirstOrDefault(p => p.FirstName == firstName && p.SecondName == secondName);
             if (existingPerson == null)
             {
                 return NotFound("Человек не найден.");
             }
 
             // Обновить данные человека.
+            existingPerson.FirstName = updatedPerson.FirstName;
+            existingPerson.SecondName = updatedPerson.SecondName;
             existingPerson.Age = updatedPerson.Age;
             existingPerson.Specialization = updatedPerson.Specialization;
 
@@ -97,7 +99,7 @@ namespace lab2.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetPerson(string firstName, string secondName)
         {
-            var person = peopleList.FirstOrDefault(p => p.FirstName == firstName && p.SecondName == secondName);
+            var person = PeopleRepository.PeopleList.FirstOrDefault(p => p.FirstName == firstName && p.SecondName == secondName);
             if (person == null)
             {
                 return NotFound("Человек не найден.");
@@ -112,21 +114,21 @@ namespace lab2.Controllers
         /// <param name="firstName">Имя.</param>
         /// <param name="secondName">Фамилия.</param>
         /// <returns>Результат обработки запроса.</returns>
-        /// <response code="204">Обьект не найден.</response>
+        /// <response code="204">Обьект успешно удален.</response>
         /// <response code="404">Невозможно выполнить запрос.</response>
         [HttpDelete("{firstName}/{secondName}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeletePerson(string firstName, string secondName)
         {
-            var person = peopleList.FirstOrDefault(p => p.FirstName == firstName && p.SecondName == secondName);
+            var person = PeopleRepository.PeopleList.FirstOrDefault(p => p.FirstName == firstName && p.SecondName == secondName);
             if (person == null)
             {
                 return NotFound("Человек не найден.");
             }
 
             // Удалить человека из списка.
-            peopleList.Remove(person);
+            PeopleRepository.PeopleList.Remove(person);
 
             // Вернуть успешный статус.
             return NoContent();

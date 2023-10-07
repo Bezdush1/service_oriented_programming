@@ -48,7 +48,7 @@
             <param name="firstName">Имя.</param>
             <param name="secondName">Фамилия.</param>
             <returns>Результат обработки запроса.</returns>
-            <response code="204">Обьект не найден.</response>
+            <response code="204">Обьект успешно удален.</response>
             <response code="404">Невозможно выполнить запрос.</response>
         </member>
         <member name="T:lab2.Models.PeopleModel">

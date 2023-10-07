@@ -30,4 +30,9 @@
         /// </summary>
         public string Specialization { get; set; } = string.Empty;
     }
+
+    public static class PeopleRepository
+    {
+        public static List<PeopleModel> PeopleList { get; } = new List<PeopleModel>();
+    }
 }
